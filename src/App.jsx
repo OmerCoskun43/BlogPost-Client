@@ -1,8 +1,15 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Auth from "./pages/Auth";
+
 function App() {
   return (
-    <>
-      <h1>TAILWIND CSS</h1>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/users" element={<Home />} />
+        <Route path="/auth" element={<Auth />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
