@@ -1,4 +1,5 @@
 import { useState } from "react";
+import useAuthCalls from "../services/useAuthCalls";
 
 const Auth = () => {
   const [signUp, setSignUp] = useState(true);
@@ -8,20 +9,41 @@ const Auth = () => {
     password: "",
   });
 
+  const { register, login } = useAuthCalls();
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("formData :>> ", formData);
+    if (signUp) {
+      // console.log("formData :>> ", formData);
+      register(formData);
+    } else {
+      login({
+        email: formData.email,
+        password: formData.password,
+      });
+    }
+    setFormData({
+      username: "",
+      email: "",
+      password: "",
+    });
   };
 
   return (
     <div className="w-full h-screen bg-gray-100 flex items-center justify-center fixed top-0 left-0 right-0 bottom-0 z-50">
       <div className="w-2/3 sm:w-2/5 bg-white rounded-lg p-3 shadow-2xl ">
-        <h1 className="text-lg sm:text-2xl font-bold text-center text-indigo-600 p-3">
-          {signUp ? "REGISTER" : "LOGIN"}
+        <h1 className="text-lg sm:text-2xl font-bold text-center text-indigo-600 p-3 cursor-pointer">
+          <span onClick={() => setSignUp(true)} className="hover:text-red-600">
+            REGISTER
+          </span>{" "}
+          |{" "}
+          <span onClick={() => setSignUp(false)} className="hover:text-red-600">
+            LOGIN
+          </span>
         </h1>
 
         <form onSubmit={handleSubmit} className="flex flex-col space-y-3 ">
@@ -61,19 +83,6 @@ const Auth = () => {
             {signUp ? "Sign Up" : "Sign In"}
           </button>
         </form>
-
-        <div>
-          {signUp ? (
-            <span onClick={() => setSignUp(!signUp)} className="span-style">
-              Do you have an account?
-            </span>
-          ) : (
-            <span onClick={() => setSignUp(!signUp)} className="span-style">
-              {" "}
-              Do you want to create an account?{" "}
-            </span>
-          )}
-        </div>
       </div>
     </div>
   );
