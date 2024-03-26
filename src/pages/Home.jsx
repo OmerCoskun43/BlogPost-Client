@@ -14,12 +14,12 @@ const Home = () => {
     blogsList();
   }, []);
   return (
-    <div className="container mx-auto mt-4 mb-4">
+    <div className="container mx-auto mt-2 mb-2">
       <h1 className="text-3xl font-bold text-emerald-600 text-center animate-bounce">
         BLOG POSTS
       </h1>
 
-      <div className="flex flex-wrap gap-4 justify-center items-center">
+      <div className="flex flex-wrap gap-2 justify-center items-center">
         {blogs?.map((blog) => {
           return <BlogCard blog={blog} key={blog._id} />;
         })}

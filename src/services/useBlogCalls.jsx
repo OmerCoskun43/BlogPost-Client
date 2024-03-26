@@ -4,10 +4,14 @@ import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 
 import { useDispatch } from "react-redux";
 import useAxios from "./useAxios";
-import { blogGetSuccess, blogListSuccess } from "../features/auth/blogSlice";
+import {
+  blogGetSuccess,
+  blogListSuccess,
+  createBlogSuccess,
+  myBlogsSuccess,
+} from "../features/auth/blogSlice";
 
 const useBlogCalls = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const { axiosWithToken, axiosPublic } = useAxios();
@@ -30,8 +34,35 @@ const useBlogCalls = () => {
       toastErrorNotify("Blogs fetched  Failed 😪😪😪");
     }
   };
+  const getMyBlogs = async (id) => {
+    try {
+      const data = await axiosWithToken.get(`/blogs/myblogs/${id}`);
+      toastSuccessNotify("My Blogs fetched  successfully");
+      dispatch(myBlogsSuccess(data));
+    } catch (error) {
+      toastErrorNotify("Blogs fetched  Failed 😪😪😪");
+    }
+  };
+  const createBlog = async (blogInfo) => {
+    try {
+      const data = await axiosWithToken.post("/blogs", blogInfo);
 
-  return { blogsList, blogOneGet };
+      toastSuccessNotify("Blog created  successfully");
+      dispatch(createBlogSuccess(data));
+    } catch (error) {
+      toastErrorNotify("Blog created  Failed 😪😪😪");
+    }
+  };
+  const deleteBlog = async (id) => {
+    try {
+      await axiosWithToken.delete(`/blogs/${id}`);
+      toastSuccessNotify("Blog deleted  Successfully");
+    } catch (error) {
+      toastErrorNotify("Blogs fetched  Failed 😪😪😪");
+    }
+  };
+
+  return { blogsList, blogOneGet, getMyBlogs, createBlog, deleteBlog };
 };
 
 export default useBlogCalls;

@@ -8,6 +8,10 @@
         @apply border p-2 rounded-md outline-none
     }
 
+    .input-label {
+        @apply ps-2 bg-blue-300 font-bold text-red-600 rounded-md
+    }
+
     .span-style {
         @apply text-sm text-red-500 cursor-pointer hover:underline
     }

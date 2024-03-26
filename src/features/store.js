@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./auth/authSlice";
 import blogReducer from "./auth/blogSlice";
+import categoryReducer from "./auth/categorySlice";
 import {
   persistStore,
   persistReducer,
@@ -25,6 +26,7 @@ const store = configureStore({
   reducer: {
     auth: persistedReducer,
     blog: blogReducer,
+    category: categoryReducer,
   },
 
   middleware: (getDefaultMiddleware) =>
