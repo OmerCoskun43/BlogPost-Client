@@ -12,3 +12,7 @@
         @apply text-sm text-red-500 cursor-pointer hover:underline
     }
 }
+
+body {
+    background-color: rgb(214, 210, 210);
+}

@@ -12,18 +12,17 @@ const Navbar = () => {
     setSearch(e.target.value);
   };
 
-  console.log("search :>> ", search);
   return (
-    <nav className="bg-gray-800 p-4">
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
+    <nav className="bg-gray-800 p-4 py-5">
+      <div className="max-w-7xl mx-auto flex flex-col gap-3 md:gap-0  md:flex-row justify-between items-center">
         <div className="flex items-center">
           <Link to="/" className="text-red-500 text-lg font-bold">
             BLOGPOST
           </Link>
         </div>
-        <div className="flex flex-row gap-5 justify-center items-center">
+        <div className="flex flex-col md:flex-row   gap-2 justify-center items-center">
           <input
-            className="h-[2rem] rounded p-2 text-red-600 placeholder-gray-700"
+            className="h-[2rem] rounded w-full md:w-2/5    p-2 text-red-600 placeholder-gray-700"
             type="text"
             placeholder="Search Blog..."
             name="search"
@@ -33,57 +32,59 @@ const Navbar = () => {
             onChange={handleChange}
           />
 
-          <ul className="flex space-x-4 font-bold  ">
-            <NavLink
-              to="/blogs"
-              style={({ isActive }) => {
-                return {
-                  color: isActive ? "red" : "white",
-                };
-              }}
-            >
-              Blogs
-            </NavLink>
-            <NavLink
-              to="/about"
-              style={({ isActive }) => {
-                return {
-                  color: isActive ? "red" : "white",
-                };
-              }}
-            >
-              About
-            </NavLink>
-            <NavLink
-              to="/profile"
-              style={({ isActive }) => {
-                return {
-                  color: isActive ? "red" : "white",
-                };
-              }}
-            >
-              Profile
-            </NavLink>
-
-            {!user && (
+          <div>
+            <ul className="flex space-x-4 font-bold ">
               <NavLink
-                to="/auth"
+                to="/blogs"
                 style={({ isActive }) => {
                   return {
                     color: isActive ? "red" : "white",
                   };
                 }}
               >
-                Login
+                My Blogs
               </NavLink>
-            )}
+              <NavLink
+                to="/about"
+                style={({ isActive }) => {
+                  return {
+                    color: isActive ? "red" : "white",
+                  };
+                }}
+              >
+                About
+              </NavLink>
+              <NavLink
+                to="/profile"
+                style={({ isActive }) => {
+                  return {
+                    color: isActive ? "red" : "white",
+                  };
+                }}
+              >
+                Profile
+              </NavLink>
 
-            {user && (
-              <NavLink onClick={() => logout()} to="#" className="text-white">
-                Logout
-              </NavLink>
-            )}
-          </ul>
+              {!user && (
+                <NavLink
+                  to="/auth"
+                  style={({ isActive }) => {
+                    return {
+                      color: isActive ? "red" : "white",
+                    };
+                  }}
+                >
+                  Login
+                </NavLink>
+              )}
+
+              {user && (
+                <NavLink onClick={() => logout()} to="#" className="text-white">
+                  Logout
+                </NavLink>
+              )}
+            </ul>
+          </div>
         </div>
       </div>
     </nav>

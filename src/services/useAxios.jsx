@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 const useAxios = () => {
   const url = import.meta.env.VITE_BASE_URL;
   const { token } = useSelector((state) => state.auth);
-  console.log("token :>> ", token);
+  // console.log("token :>> ", token);
 
   const axiosPublic = axios.create({
     baseURL: url,

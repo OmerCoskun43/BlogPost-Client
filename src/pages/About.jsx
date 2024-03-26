@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 const About = () => {
   return (
-    <div className="bg-gray-100 py-10 h-[36rem]">
+    <div className="bg-gray-100 py-10 md:h-[35.5rem]">
       <div className="container mx-auto px-4 py-8 text-justify w-5/6">
         <h1 className="text-3xl font-bold mb-4 text-red-600">
           About Our Blog Site

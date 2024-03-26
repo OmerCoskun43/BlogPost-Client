@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar";
 import About from "./pages/About";
 import Profile from "./pages/Profile";
 import Blogs from "./pages/Blogs";
+import SingleBlog from "./pages/SingleBlog";
 
 function App() {
   const { token } = useSelector((state) => state.auth);
@@ -20,6 +21,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/blogs" element={token ? <Blogs /> : <Auth />} />
+          <Route path="/blog/:id" element={token ? <SingleBlog /> : <Auth />} />
           <Route path="/users" element={<User />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/about" element={<About />} />

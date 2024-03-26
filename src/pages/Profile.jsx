@@ -15,7 +15,7 @@ const Profile = () => {
         <div className="md:flex">
           <div className="md:flex-shrink-0">
             <img
-              className="h-48 w-full object-cover md:w-48"
+              className="md:h-48 w-full object-cover md:w-48"
               src="https://icons.veryicon.com/png/o/miscellaneous/standard/avatar-15.png"
               alt="Profile Picture"
             />
