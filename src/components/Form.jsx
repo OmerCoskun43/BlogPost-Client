@@ -9,7 +9,7 @@ const Form = () => {
   const { user } = useSelector((state) => state.auth);
   const { categoryList } = useCategoryCalls();
   const { categories } = useSelector((state) => state.category);
-  const { createBlog, getMyBlogs } = useBlogCalls();
+  const { createBlog, getMyBlogs, blogsList } = useBlogCalls();
   const [formData, setformData] = useState({
     title: "",
     userId: user._id,
@@ -27,6 +27,7 @@ const Form = () => {
     e.preventDefault();
     createBlog(formData);
     getMyBlogs(user._id);
+    blogsList();
     setformData({
       title: "",
       userId: user._id,
